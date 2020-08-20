@@ -1,0 +1,14 @@
+npm install -y //creates package.json file in server folder
+npm install express  // installs express(node modules folder would be created). creates package-lock.json
+
+node server.js  // to run the main file
+
+npm install dotenv   // package to manage environment variables
+npm install nodemon  // to restart server whenever any change is made
+/*
+add the necessary script {"start": "nodemon server.js"} in package.json and run "npm start"
+
+npm i morgan // a express middleware that takes care of login process
+npm install pg // install postgress db handler
+
+npm install cors // install cors policy

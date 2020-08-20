@@ -1,0 +1,54 @@
+Using PostgreSQL
+DB Name : yelp
+
+CREATE USER abhishek WITH SUPERUSER PASSWORD 'root1234'; // creates a new DB user
+
+CREATE TABLE restaurants (
+	id INT,                      // not autoincrement and not null
+	name VARCHAR(50),
+	location VARCHAR(50),
+	price_range INT
+);
+
+INSERT INTO restaurants(id, name, location, price_range) values (123, 'mcdonalds', 'new york', 3) returning *;
+// returning * returns the new row that's added
+
+CREATE TABLE restaurants (
+	id BIGSERIAL NOT NULL,  // still not unique. though autoincrements, i can add value by force
+	name VARCHAR(50) NOT NULL,
+	location VARCHAR(50) NOT NULL,
+	price_range INT NOT NULL	// needs restraints
+);
+
+CREATE TABLE restaurants (
+	id BIGSERIAL NOT NULL PRIMARY KEY,  
+	name VARCHAR(50) NOT NULL,
+	location VARCHAR(50) NOT NULL,
+	price_range INT NOT NULL check(price_range >=1 and price_range <= 5)
+);
+
+UPDATE restaurants SET name = 'red lobster', location = 'miami', price_range = 3 WHERE id = 2;
+
+CREATE TABLE reviews (
+	id BIGSERIAL NOT NULL PRIMARY KEY,
+	restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+	name VARCHAR(50) NOT NULL,
+	review TEXT NOT NULL,
+	rating INT NOT NULL check(rating >= 1 and rating <=5)
+);
+
+SELECT COUNT(*) FROM reviews;
+
+SELECT TRUNC(AVG(rating), 3) FROM reviews;
+
+SELECT TRUNC(AVG(rating), 1) FROM reviews WHERE restaurant_id = 1;
+
+SELECT COUNT(rating) FROM reviews WHERE restaurant_id =5;
+
+SELECT location, COUNT(location) FROM restaurants GROUP BY location;
+
+SELECT restaurant_id, COUNT(restaurant_id) FROM reviews GROUP BY restaurant_id;
+
+SELECT restaurant_id, TRUNC(AVG(rating), 2) FROM reviews GROUP BY restaurant_id;
+
+SELECT * FROM restaurants LEFT JOIN(SELECT restaurant_id, COUNT(*), TRUNC(AVG(rating), 2) FROM reviews GROUP BY restaurant_id) reviews on restaurants.id = reviews.restaurant_id;

@@ -1,0 +1,13 @@
+Create DB (in PostgreSQL)
+Create server 
+    and thus API (CRUD operations)
+    /api/vi/restaurants (v1 means version 1 of the api)
+
+Something called middleware in express to handle the request
+    from client, process them and the send to route handler(which
+    technically a middleware)
+    // a middleware in express which handles the sent request 
+    // it should be on top of the targeted route handler or else the request wont hit here
+    // we can have as many middleware as possible
+
+install " ext install dsznajder.es7-react-js-snippets " in VS COde for code suggestion for react

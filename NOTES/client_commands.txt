@@ -1,0 +1,14 @@
+npm install create-react-app -g
+
+goto client directory and type "npx create-react-app ."
+
+
+npm install react-router-dom
+
+install react devloper tools installed in browser
+
+npm install axios
+
+due to CORS policy (api request can't be made  with different domains by default)
+(here server and client in different ports, hence different domains)
+Have to setup a policy in express to allow other domains

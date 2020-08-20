@@ -1,0 +1,11 @@
+node-postgres (postgres handling package for nodejs)
+https://node-postgres.com/features/connecting
+
+POSTGRES DB BASICS- useful tutorial 
+https://www.postgresqltutorial.com/
+http://manpages.ubuntu.com/manpages/bionic/man1/psql.1.html
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
+
+INSTALLING REACT 
+https://medium.com/@DanielSayidi/install-and-setup-react-app-on-ubuntu-18-04-3-lts-fcd2c875885a
+
